@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="nickname-container" class="">
+        <label for="nickname-input">Enter your nickname:</label>
+        <input type="text" id="nickname-input">
+        <button id="set-nickname">Start Game</button>
+    </div>
+
+    <div id="game-board" class="hidden">
+        <!-- 4x4 그리드를 생성합니다 -->
+        <div class="grid-container">
+            <!-- 각 칸을 정의합니다 -->
+            <div class="grid-item" data-x="0" data-y="0"></div>
+            <div class="grid-item" data-x="0" data-y="1"></div>
+            <div class="grid-item" data-x="0" data-y="2"></div>
+            <div class="grid-item" data-x="0" data-y="3"></div>
+            <div class="grid-item" data-x="0" data-y="4"></div>
+
+            <div class="grid-item" data-x="1" data-y="0"></div>
+            <div class="grid-item" data-x="1" data-y="1"></div>
+            <div class="grid-item" data-x="1" data-y="2"></div>
+            <div class="grid-item" data-x="1" data-y="3"></div>
+            <div class="grid-item" data-x="1" data-y="4"></div>
+
+            <div class="grid-item" data-x="2" data-y="0"></div>
+            <div class="grid-item" data-x="2" data-y="1"></div>
+            <div class="grid-item" data-x="2" data-y="2"></div>
+            <div class="grid-item" data-x="2" data-y="3"></div>
+            <div class="grid-item" data-x="2" data-y="4"></div>
+
+            <div class="grid-item" data-x="3" data-y="0"></div>
+            <div class="grid-item" data-x="3" data-y="1"></div>
+            <div class="grid-item" data-x="3" data-y="2"></div>
+            <div class="grid-item" data-x="3" data-y="3"></div>
+            <div class="grid-item" data-x="3" data-y="4"></div>
+
+            <div class="grid-item" data-x="4" data-y="0"></div>
+            <div class="grid-item" data-x="4" data-y="1"></div>
+            <div class="grid-item" data-x="4" data-y="2"></div>
+            <div class="grid-item" data-x="4" data-y="3"></div>
+            <div class="grid-item" data-x="4" data-y="4"></div>
+
+            <div class="grid-item" data-x="5" data-y="0"></div>
+            <div class="grid-item" data-x="5" data-y="1"></div>
+            <div class="grid-item" data-x="5" data-y="2"></div>
+            <div class="grid-item" data-x="5" data-y="3"></div>
+            <div class="grid-item" data-x="5" data-y="4"></div>
+
+            <div class="grid-item" data-x="6" data-y="0"></div>
+            <div class="grid-item" data-x="6" data-y="1"></div>
+            <div class="grid-item" data-x="6" data-y="2"></div>
+            <div class="grid-item" data-x="6" data-y="3"></div>
+            <div class="grid-item" data-x="6" data-y="4"></div>
+
+            <div class="grid-item" data-x="7" data-y="0"></div>
+            <div class="grid-item" data-x="7" data-y="1"></div>
+            <div class="grid-item" data-x="7" data-y="2"></div>
+            <div class="grid-item" data-x="7" data-y="3"></div>
+            <div class="grid-item" data-x="7" data-y="4"></div>
+        </div>
+    </div>
+
+    <div id="score" class="hidden">Score: 0</div>
+    <button id="restart" class="hidden">Restart</button>
+
+    <div id="settings-container" class="hidden">
+        <h2>Settings</h2>
+        <label for="new-nickname-input">Change Nickname:</label>
+        <input type="text" id="new-nickname-input">
+        <button id="change-nickname">Save</button>
+        <button id="close-settings">Close</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
