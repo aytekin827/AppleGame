@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: rgb(245, 197, 213)
 }
 
 .hidden {
@@ -33,7 +34,7 @@ body {
 
 #game-board {
     margin: 20px auto;
-    width: 260px;
+    width: 270px;
     height: 420px;
 }
 
@@ -45,24 +46,27 @@ body {
 }
 
 .grid-item {
-    background-color: #f0f0f0;
+    background-color: rgb(245, 197, 231);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 3px;
     user-select: none;
 }
 
 .grid-item img {
     width: 40px;
     height: 40px;
+    background-color: rgb(245, 197, 231);
+    border-radius: 20%;
 }
 
 .grid-item span {
     position: absolute;
-    font-size: 16px;
+    top: 37%;
+    font-size: 15px;
     font-weight: bold;
     color: white;
     text-shadow: 1px 1px 2px black;

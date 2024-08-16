@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apple Game</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="buttons.css">
 </head>
 <body>
-    <div id="nickname-container" class="">
-        <label for="nickname-input">Enter your nickname:</label>
-        <input type="text" id="nickname-input">
-        <button id="set-nickname">Start Game</button>
-    </div>
 
-    <div id="game-board" class="hidden">
+    <div id="meta-info" class="hidden">
+
+        <h3>Apple Game</h3>
+        <div id="nickname-display">Hello <span id="nickname"></span>!</div>
+        <button id="start-game" class="btn red large">Start Game</button>
+        <div id="timer">Time left: <span id="time-left">60</span> seconds</div>
+        
+    </div>
+    
+    <div id="game-board" class=>
+
         <!-- 4x4 그리드를 생성합니다 -->
         <div class="grid-container">
             <!-- 각 칸을 정의합니다 -->
@@ -67,10 +73,16 @@
         </div>
     </div>
 
-    <div id="score" class="hidden">Score: 0</div>
-    <button id="restart" class="hidden">Restart</button>
+    <div id="nickname-container" class="hidden">
+        <label for="nickname-input">Enter your nickname:</label>
+        <input type="text" id="nickname-input">
+        <button id="set-nickname">Start Game</button>
+    </div>
 
-    <div id="settings-container" class="hidden">
+    <div id="score">Score: 0</div>
+    <button id="restart">Restart</button>
+
+    <div id="settings-container" class='hidden'>
         <h2>Settings</h2>
         <label for="new-nickname-input">Change Nickname:</label>
         <input type="text" id="new-nickname-input">

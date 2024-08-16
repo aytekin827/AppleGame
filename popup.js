@@ -26,11 +26,11 @@ function renderBoard() {
         const value = grid[x][y];
 
         if (value !== 0) {
-            item.innerHTML = `<img src="images/apple_icon.png" alt="Apple"><span>${value}</span>`;
-            item.style.backgroundColor = '#f0f0f0';
+            item.innerHTML = `<img src="images/apple_icon.png" alt="Apple"><span class="number">${value}</span>`;
+            item.style.backgroundColor = '#f5c5d5';
         } else {
             item.innerHTML = '';
-            item.style.backgroundColor = '#ccc';
+            item.style.backgroundColor = '#f5c5d5';
         }
     });
 }
@@ -50,11 +50,11 @@ function handleItemClick(event) {
     // 이미 선택된 셀이라면 선택 취소
     if (selectedCells.some(cell => cell.x === x && cell.y === y)) {
         selectedCells = selectedCells.filter(cell => !(cell.x === x && cell.y === y));
-        item.style.backgroundColor = '#f0f0f0';
+        item.style.backgroundColor = '#f5c5d5';
     } else {
         // 새로운 셀 선택
         selectedCells.push({ x, y });
-        item.style.backgroundColor = '#d0d0d0';
+        item.style.backgroundColor = '#7ec3ff';
     }
 
     // 선택한 셀들의 숫자를 합산
@@ -66,11 +66,23 @@ function handleItemClick(event) {
             grid[cell.x][cell.y] = 0;
             const item = document.querySelector(`.grid-item[data-x="${cell.x}"][data-y="${cell.y}"]`);
             item.innerHTML = '';
-            item.style.backgroundColor = '#ccc';
+            item.style.backgroundColor = '#f5c5d5';
         });
         updateScore(selectedCells.length);
         selectedCells = [];
+    } else if (sum > 10) {
+        // 합이 10을 넘으면 체크 해제
+        clearSelectedCells();
     }
+}
+
+// 체크 해제 함수
+function clearSelectedCells() {
+    selectedCells.forEach(cell => {
+        const item = document.querySelector(`.grid-item[data-x="${cell.x}"][data-y="${cell.y}"]`);
+        item.style.backgroundColor = '#f5c5d5';
+    });
+    selectedCells = [];
 }
 
 // 게임을 재시작하는 함수
@@ -80,14 +92,6 @@ function restartGame() {
     selectedCells = [];
     initBoard();
 }
-
-chrome.storage.sync.set({key: value}, function() {
-    console.log('Value is set to ' + value);
-  });
-  
-chrome.storage.sync.get(['key'], function(result) {
-    console.log('Value currently is ' + result.key);
-  });
 
 function submitNickname() {
     nickname = document.getElementById('nickname-input')
@@ -101,4 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.grid-item').forEach((item) => {
         item.addEventListener('click', handleItemClick);
     });
+    // 마우스 오른쪽 버튼 클릭 시 체크 해제
+    // document.addEventListener('contextmenu', (event) => {
+    //     event.preventDefault(); // 기본 컨텍스트 메뉴 방지
+    //     clearSelectedCells(); // 선택된 셀 체크 해제
+    // });
 });
