@@ -101,6 +101,9 @@ function clearSelectedCells() {
 function restartGame() {
     timeLeft = 20
 
+    document.getElementById('grid-overlay').classList.add('off')
+    document.getElementById('grid-overlay').classList.remove('on')
+
     score = 0;
     updateScore(0);
     selectedCells = [];
@@ -121,8 +124,14 @@ function submitNickname() {
 // 게임 시작 함수
 function startGame() {
     // 타이머 시작
+    timeLeft = 20
+
+    timerElement.textContent = `${timeLeft}`;
+    progressBar.style.width = `100%`;
+
     timerInterval = setInterval(updateTimer, 1000);
-    
+    document.getElementById('home-button').classList.remove('hidden')
+
     // 초기 게임 셋업
     initializeGame();
 }
@@ -148,15 +157,16 @@ function updateTimer() {
     } else if (timeLeft <= 3) {
         progressBar.classList.remove('blink');
         progressBar.classList.add('fast-blink');
-    } else if (timeLeft <= 10) {
+    } else if (timeLeft <= 5) {
         progressBar.classList.add('blink');
     }
 }
 
 // 게임 종료 함수
 function endGame() {
-    document.getElementById('screenshot-button').classList.remove('hidden');
-    
+    document.getElementById('camera-button').classList.remove('hidden');
+    document.getElementById('grid-overlay').classList.add('on')
+    document.getElementById('grid-overlay').classList.remove('off')
     // 게임 종료 메시지 표시
     
     // 게임 종료 시 더 게임 플레이 못하도록 처리
@@ -193,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // });
 });
 
-document.getElementById('screenshot-button').addEventListener('click', function() {
+document.getElementById('camera-button').addEventListener('click', function() {
     html2canvas(document.body).then(canvas => {
         // 스크린샷을 이미지로 변환하여 다운로드
         const link = document.createElement('a');
@@ -201,4 +211,13 @@ document.getElementById('screenshot-button').addEventListener('click', function(
         link.href = canvas.toDataURL();
         link.click();
     });
+});
+
+document.getElementById('home-button').addEventListener('click', function() {
+    document.getElementById("meta-info").classList.remove('hidden')
+    document.getElementById("game-board").classList.add('hidden')
+    document.getElementById('home-button').classList.add('hidden')
+
+    clearInterval(timerInterval);
+
 });

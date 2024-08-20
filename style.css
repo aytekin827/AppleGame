@@ -20,7 +20,7 @@ img.settings {
   
 img.settings:hover {
     opacity: 1;
-    transform: rotate(60deg);
+    transform: scale(1.15,1.15) rotate(60deg);
     transition: 0.1s
   }
 
@@ -83,18 +83,92 @@ img.settings:hover {
     text-shadow: 1px 1px 2px black;
     pointer-events: none;
 }
+.grid {
+    position: relative;
+}
+.overlay.on {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(78, 78, 78, 0.3);
+    opacity: 1;
+    transition: .5s linear;
+    border-radius: 5%;
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 192, 203, 0.7) 25%, /* 핑크색에 opacity 0.5 적용 */
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 192, 203, 0.7) 50%, /* 핑크색에 opacity 0.5 적용 */
+        rgba(255, 192, 203, 0.7) 75%, /* 핑크색에 opacity 0.5 적용 */
+        transparent 75%,
+        transparent
+    );    background-size: 20px 20px; /* 패턴 크기 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.game-over{
+    opacity: 1;
+    z-index: 1001;
+    background-color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    color: white;
+}
+
+.overlay.off{
+    position: absolute;
+    z-index: -1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(78, 78, 78, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s linear;
+    border-radius: 5%;
+    background-image: linear-gradient(45deg, pink 25%, transparent 25%, transparent 50%, pink 50%, pink 75%, transparent 75%, transparent);
+    background-size: 20px 20px; /* 패턴 크기 */
+}
 
 #score {
     margin-top: 20px;
     font-size: 18px;
 }
 
-#screenshot-button {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 5px 10px;
-    font-size: 14px;
+img.camera {
+    opacity: 0.6;
+    position: fixed;
+    left: 90%;
+    top: 95%;
+    height: 20px;
 }
+
+img.camera:hover {
+    opacity: 1;
+    transform: scale(1.15,1.15) rotate(-10deg);
+    transition: 0.1s
+  }
+
+img.home {
+    opacity: 0.6;
+    position: fixed;
+    left: 90%;
+    top: 3%;
+    height: 15px;
+}
+
+img.home:hover {
+    opacity: 1;
+    transform: scale(1.15,1.15) ;
+    transition: 0.1s
+  }
 
 #restart {
     margin-top: 10px;
