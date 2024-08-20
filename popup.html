@@ -9,18 +9,22 @@
 </head>
 <body>
 
-    <div id="meta-info" class="hidden">
-
+    
+    <div id="meta-info" class=>
         <h3>Apple Game</h3>
         <div id="nickname-display">Hello <span id="nickname"></span>!</div>
+
         <button id="start-game" class="btn red large">Start Game</button>
-        <div id="timer">Time left: <span id="time-left">60</span> seconds</div>
         
     </div>
-    <div id="timer">Time left: 60s</div>
-    <button id="startButton">Start Game</button>
-    <div id="game-board" class=>
-
+    <div id="game-board" class="hidden">
+        <div id="timer-container">
+            <span id="time-left">60</span>
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+        </div>
+        
         <!-- 4x4 그리드를 생성합니다 -->
         <div class="grid-container">
             <!-- 각 칸을 정의합니다 -->
@@ -72,7 +76,13 @@
             <div class="grid-item" data-x="7" data-y="3"></div>
             <div class="grid-item" data-x="7" data-y="4"></div>
         </div>
+
+        <div id="score">Score: 0</div>
+        <button id="restart" class="btn green">Restart</button>
+        <button id="screenshot-button" class="btn cyan">Screenshot</button>
+        
     </div>
+
 
     <div id="nickname-container" class="hidden">
         <label for="nickname-input">Enter your nickname:</label>
@@ -80,8 +90,6 @@
         <button id="set-nickname">Start Game</button>
     </div>
 
-    <div id="score">Score: 0</div>
-    <button id="restart">Restart</button>
 
     <div id="settings-container" class='hidden'>
         <h2>Settings</h2>
@@ -92,5 +100,6 @@
     </div>
 
     <script src="popup.js"></script>
+    <script src="html2canvas.min.js"></script>
 </body>
 </html>

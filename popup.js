@@ -2,7 +2,8 @@ let grid = [];
 let score = 0;
 let selectedCells = [];
 let nickname;
-let timerElement = document.getElementById('timer');
+let timerElement = document.getElementById('time-left');
+let progressBar = document.getElementById('progress-bar');
 let timeLeft = 60; // 1분 (60초)
 let timerInterval;
 
@@ -18,6 +19,7 @@ function initBoard() {
         grid.push(row);
     }
     renderBoard();
+    initTimer();
 }
 
 // 게임 보드를 화면에 렌더링하는 함수
@@ -96,6 +98,8 @@ function clearSelectedCells() {
 
 // 게임을 재시작하는 함수
 function restartGame() {
+    timeLeft = 61
+
     score = 0;
     updateScore(0);
     selectedCells = [];
@@ -116,22 +120,37 @@ function startGame() {
     initializeGame();
 }
 
+function initTimer() {
+    progressBar.style.width = `100%`;
+    timeLeft = 60
+    timerElement.textContent = `${timeLeft}`;
+}
+
 // 타이머 업데이트 함수
 function updateTimer() {
     timeLeft--;
-    timerElement.textContent = `Time left: ${timeLeft}s`;
+    timerElement.textContent = `${timeLeft}`;
+
+    // 남은 시간을 백분율로 계산하여 progress bar의 너비 조정
+    const progressPercentage = (timeLeft / 60) * 100;
+    progressBar.style.width = `${progressPercentage}%`;
 
     if (timeLeft <= 0) {
         clearInterval(timerInterval);
         endGame();
+    } else if (timeLeft <= 3) {
+        progressBar.classList.remove('blink');
+        progressBar.classList.add('fast-blink');
+    } else if (timeLeft <= 10) {
+        progressBar.classList.add('blink');
     }
 }
 
 // 게임 종료 함수
 function endGame() {
     // 게임 종료 메시지 표시
-    alert('Game Over! Time is up.');
-    
+    document.getElementById('screenshot-button').classList.add('hidden');
+
     // 필요시 추가적인 게임 종료 로직을 여기서 처리
     // 예: 재시작 버튼 활성화, 점수 저장 등
 }
@@ -143,7 +162,9 @@ function initializeGame() {
 }
 
 // 게임 시작 버튼을 눌렀을 때 시작하도록 이벤트 리스너 추가
-document.getElementById('startButton').addEventListener('click', function() {
+document.getElementById('start-game').addEventListener('click', function() {
+    document.getElementById("meta-info").classList.add('hidden')
+    document.getElementById("game-board").classList.remove('hidden')
     startGame();
 });
 
@@ -160,4 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
     //     event.preventDefault(); // 기본 컨텍스트 메뉴 방지
     //     clearSelectedCells(); // 선택된 셀 체크 해제
     // });
+});
+
+document.getElementById('screenshot-button').addEventListener('click', function() {
+    html2canvas(document.body).then(canvas => {
+        // 스크린샷을 이미지로 변환하여 다운로드
+        const link = document.createElement('a');
+        link.download = 'screenshot.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
 });
