@@ -9,7 +9,8 @@
 </head>
 <body>
 
-    
+    <img src="images/settings.svg" alt="Settings" id="settings" style="visibility: visible;">
+
     <div id="meta-info" class=>
         <h3>Apple Game</h3>
         <div id="nickname-display">Hello <span id="nickname"></span>!</div>
@@ -79,7 +80,7 @@
 
         <div id="score">Score: 0</div>
         <button id="restart" class="btn green">Restart</button>
-        <button id="screenshot-button" class="btn cyan">Screenshot</button>
+        <button id="screenshot-button" class="btn cyan hidden">Screenshot</button>
         
     </div>
 
@@ -91,13 +92,6 @@
     </div>
 
 
-    <div id="settings-container" class='hidden'>
-        <h2>Settings</h2>
-        <label for="new-nickname-input">Change Nickname:</label>
-        <input type="text" id="new-nickname-input">
-        <button id="change-nickname">Save</button>
-        <button id="close-settings">Close</button>
-    </div>
 
     <script src="popup.js"></script>
     <script src="html2canvas.min.js"></script>
