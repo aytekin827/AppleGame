@@ -4,7 +4,7 @@ let selectedCells = [];
 let nickname;
 let timerElement = document.getElementById('time-left');
 let progressBar = document.getElementById('progress-bar');
-let timeLeft = 60; // 1분 (60초)
+let timeLeft = 20; 
 let timerInterval;
 
 // 게임 보드를 초기화하는 함수
@@ -19,7 +19,8 @@ function initBoard() {
         grid.push(row);
     }
     renderBoard();
-    initTimer();
+    progressBar.classList.remove('blink')
+    progressBar.classList.remove('fast-blink')
 }
 
 // 게임 보드를 화면에 렌더링하는 함수
@@ -98,12 +99,18 @@ function clearSelectedCells() {
 
 // 게임을 재시작하는 함수
 function restartGame() {
-    timeLeft = 61
+    timeLeft = 20
 
     score = 0;
     updateScore(0);
     selectedCells = [];
     initBoard();
+
+    timerElement.textContent = `${timeLeft}`;
+    progressBar.style.width = `100%`;
+
+    clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimer, 1000);
 }
 
 function submitNickname() {
@@ -122,7 +129,7 @@ function startGame() {
 
 function initTimer() {
     progressBar.style.width = `100%`;
-    timeLeft = 60
+    timeLeft = 20
     timerElement.textContent = `${timeLeft}`;
 }
 
@@ -132,7 +139,7 @@ function updateTimer() {
     timerElement.textContent = `${timeLeft}`;
 
     // 남은 시간을 백분율로 계산하여 progress bar의 너비 조정
-    const progressPercentage = (timeLeft / 60) * 100;
+    const progressPercentage = (timeLeft / 20) * 100;
     progressBar.style.width = `${progressPercentage}%`;
 
     if (timeLeft <= 0) {
@@ -148,8 +155,11 @@ function updateTimer() {
 
 // 게임 종료 함수
 function endGame() {
+    document.getElementById('screenshot-button').classList.remove('hidden');
+    
     // 게임 종료 메시지 표시
-    document.getElementById('screenshot-button').classList.add('hidden');
+    
+    // 게임 종료 시 더 게임 플레이 못하도록 처리
 
     // 필요시 추가적인 게임 종료 로직을 여기서 처리
     // 예: 재시작 버튼 활성화, 점수 저장 등

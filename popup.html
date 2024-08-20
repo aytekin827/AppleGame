@@ -8,8 +8,46 @@
     <link rel="stylesheet" href="buttons.css">
 </head>
 <body>
-
-    <img src="images/settings.svg" alt="Settings" id="settings" style="visibility: visible;">
+    <div id="settings-container">
+        <span>
+            <img src="images/settings.svg" alt="Settings" class="settings" style="visibility: visible;">
+        </span>
+        <!-- <div class="options">
+            <p class="options-title">Available Themes</p>
+            <div class="container" id="connected">
+              <img src="./src/imgs/connected.png" alt="Connected">
+              <div class="overlay">
+                <div class="text">
+                  Connected
+                </div>
+              </div>
+            </div>
+            <div class="container" id="connectedBlue">
+              <img src="./src/imgs/connectedBlue.png" alt="Connected Blue">
+              <div class="overlay">
+                <div class="text">
+                  Connected Blue
+                </div>
+              </div>
+            </div>
+            <div class="container" id="connectedDarkBlue">
+              <img src="./src/imgs/connectedDarkBlue.png" alt="Connected Dark Blue">
+              <div class="overlay">
+                <div class="text">
+                  Connected Dark Blue
+                </div>
+              </div>
+            </div>
+            <div class="container" id="clear">
+              <img src="./src/imgs/clear.png" alt="Clear">
+              <div class="overlay">
+                <div class="text">
+                  Clear
+                </div>
+              </div>
+            </div>
+          </div> -->
+    </div>
 
     <div id="meta-info" class=>
         <h3>Apple Game</h3>
@@ -20,7 +58,7 @@
     </div>
     <div id="game-board" class="hidden">
         <div id="timer-container">
-            <span id="time-left">60</span>
+            <span id="time-left">20</span>
             <div id="progress-bar-container">
                 <div id="progress-bar"></div>
             </div>
@@ -84,14 +122,11 @@
         
     </div>
 
-
     <div id="nickname-container" class="hidden">
         <label for="nickname-input">Enter your nickname:</label>
         <input type="text" id="nickname-input">
         <button id="set-nickname">Start Game</button>
     </div>
-
-
 
     <script src="popup.js"></script>
     <script src="html2canvas.min.js"></script>

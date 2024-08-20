@@ -10,23 +10,25 @@ body {
     display: none !important;
 }
 
-#settings {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 15px;
+img.settings {
+    opacity: 0.6;
+    position: fixed;
+    left: 3%;
+    top: 3%;
     height: 15px;
-}
+  }
+  
+img.settings:hover {
+    opacity: 1;
+    transform: rotate(60deg);
+    transition: 0.1s
+  }
 
 #nickname-container {
     margin-top: 20px;
 }
 
 #game-container {
-    margin-top: 20px;
-}
-
-#settings-container {
     margin-top: 20px;
 }
 
