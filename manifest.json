@@ -11,5 +11,5 @@
       "128": "images/icon128.png"
     }
   },
-  "permissions": ["storage"]
+  "permissions": []
 }

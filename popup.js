@@ -197,10 +197,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 마우스 오른쪽 버튼 클릭 시 체크 해제
-    // document.addEventListener('contextmenu', (event) => {
-    //     event.preventDefault(); // 기본 컨텍스트 메뉴 방지
-    //     clearSelectedCells(); // 선택된 셀 체크 해제
-    // });
+    document.addEventListener('contextmenu', (event) => {
+        event.preventDefault(); // 기본 컨텍스트 메뉴 방지
+        clearSelectedCells(); // 선택된 셀 체크 해제
+    });
 });
 
 document.getElementById('camera-button').addEventListener('click', function() {
