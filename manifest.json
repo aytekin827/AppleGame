@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Apple Game",
-  "version": "1.1",
+  "version": "1.2",
+  "description": "apple game. Make 10 as soon as possible! do your best to be a global ranker!",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -11,5 +12,5 @@
       "128": "images/icon128.png"
     }
   },
-  "permissions": []
+  "permissions": ["tabs"]
 }
