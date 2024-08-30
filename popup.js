@@ -238,11 +238,14 @@ function goHome() {
     document.getElementById("meta-info").classList.remove('hidden')
     document.getElementById('start-game').classList.remove('hidden')
     document.getElementById('settings-icon').classList.remove('hidden')
-
+    document.getElementById('nickname-display').classList.remove('hidden')
+    document.getElementById('donate-coffee').classList.remove('hidden')
+    
     document.getElementById('camera-button').classList.add('hidden')
     document.getElementById("game-board").classList.add('hidden')
     document.getElementById('home-button').classList.add('hidden')
     document.getElementById('settings-board').classList.add('hidden')
+    document.getElementById('developer-meta').classList.add('hidden')
 
 }
 
@@ -260,6 +263,10 @@ document.getElementById('settings-icon').addEventListener('click', function() {
     } else {
         document.getElementById('settings-board').classList.remove('hidden');
         document.getElementById('home-button').classList.remove('hidden');
+        document.getElementById('developer-meta').classList.remove('hidden')
+        
+        document.getElementById('donate-coffee').classList.add('hidden')
+        document.getElementById('nickname-display').classList.add('hidden');
         document.getElementById('start-game').classList.add('hidden');
     }
   });
@@ -308,12 +315,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 사용자 UI/UX (마우스 오른쪽 버튼 클릭 시 체크 해제)
     document.addEventListener('contextmenu', (event) => {
-        // event.preventDefault(); // 기본 컨텍스트 메뉴 방지
-        // clearSelectedCells(); // 선택된 셀 체크 해제
+        event.preventDefault(); // 기본 컨텍스트 메뉴 방지
+        clearSelectedCells(); // 선택된 셀 체크 해제
     });
 });
 
 
 document.getElementById('donate-coffee').addEventListener('click', function() {
+    chrome.tabs.create({ url: 'https://ko-fi.com/aytekin827' });
+});
+
+document.getElementById('developer-meta').addEventListener('click', function() {
     chrome.tabs.create({ url: 'https://ko-fi.com/aytekin827' });
 });
